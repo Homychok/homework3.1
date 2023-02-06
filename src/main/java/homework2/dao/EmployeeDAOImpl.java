@@ -41,7 +41,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             statement.setInt(1,id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-//                employee.setId(resultSet.getInt("id"));
+                employee.setId(Integer.parseInt(resultSet.getString("id")));
                 employee.setFirst_name(resultSet.getString("first_name"));
                 employee.setLast_name(resultSet.getString("last_name"));
                 employee.setGender(resultSet.getString("gender"));
@@ -52,25 +52,22 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+        return employee;
     }
 
     @Override
     public List<Employee> readAll() {
         List<Employee> employees = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement(Queries.INSERT.query)){
+        try (PreparedStatement statement = connection.prepareStatement(Queries.GET_ALL.query)){
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                int id = resultSet.getInt("id");
+                int id = Integer.parseInt(resultSet.getString("id"));
                 String first_name = resultSet.getString("first_name");
                 String last_name = resultSet.getString("last_name");
                 String gender = resultSet.getString("gender");
                 int age = resultSet.getInt("age");
                 int city_id = resultSet.getInt("city_id");
-                employees.add(new Employee());
-
-
-
+                employees.add(new Employee(id, first_name, last_name, gender, age, city_id));
             }
 
         } catch (SQLException e) {
