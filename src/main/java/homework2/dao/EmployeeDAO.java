@@ -1,6 +1,6 @@
-package homework.dao;
+package homework2.dao;
 
-import homework.model.Employee;
+import homework2.model.Employee;
 
 import java.util.List;
 

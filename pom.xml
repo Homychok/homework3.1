@@ -7,7 +7,7 @@
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
 
-  <name>homework Maven Webapp</name>
+  <name>homework2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
   <dependencies>
@@ -27,7 +27,7 @@
   </dependencies>
 
   <build>
-    <finalName>homework</finalName>
+    <finalName>homework2</finalName>
       <plugins>
           <plugin>
               <groupId>org.apache.maven.plugins</groupId>

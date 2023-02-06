@@ -1,21 +1,32 @@
-package homework.model;
+package homework2.model;
 
-import homework.dao.EmployeeDAO;
-
-import java.sql.PreparedStatement;
-import java.util.List;
 import java.util.Objects;
 
 public class Employee {
-    private Integer id;
     private String first_name;
     private String last_name;
     private String gender;
     private Integer age;
     private Integer city_id;
+    private Integer id;
+public Employee() {
 
-    public Employee(Integer id, String first_name, String last_name, String gender, Integer age, Integer city_id) {
+}
+
+    public Employee(Integer id, String first_name, String last_name, String gender, int age, int city_id) {
         this.id = id;
+    }
+
+    public Employee(String first_name, String last_name, String gender, Integer age, Integer city_id, Integer id) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.gender = gender;
+        this.age = age;
+        this.city_id = city_id;
+        this.id = id;
+    }
+
+    public Employee(String first_name, String last_name, String gender, Integer age, Integer city_id) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.gender = gender;
@@ -76,24 +87,23 @@ public class Employee {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(getId(), employee.getId()) && Objects.equals(getFirst_name(), employee.getFirst_name()) && Objects.equals(getLast_name(), employee.getLast_name()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getAge(), employee.getAge()) && Objects.equals(getCity_id(), employee.getCity_id());
+        return Objects.equals(getFirst_name(), employee.getFirst_name()) && Objects.equals(getLast_name(), employee.getLast_name()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getAge(), employee.getAge()) && Objects.equals(getCity_id(), employee.getCity_id()) && Objects.equals(getId(), employee.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirst_name(), getLast_name(), getGender(), getAge(), getCity_id());
+        return Objects.hash(getFirst_name(), getLast_name(), getGender(), getAge(), getCity_id(), getId());
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "id=" + id +
-                ", first_name='" + first_name + '\'' +
+                "first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
                 ", city_id=" + city_id +
+                ", id=" + id +
                 '}';
     }
-
 }
