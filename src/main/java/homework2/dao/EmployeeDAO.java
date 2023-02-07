@@ -11,6 +11,6 @@ public interface EmployeeDAO {
 //    Employee readById(Integer id, String first_name, String last_name, String gender, Integer age, Integer city_id);
 
     List<Employee> readAll();
-    void updateById (int id, int age);
-    void deleteById (int id);
+    void updateById (Employee employee);
+    void deleteById (Employee employee);
 }

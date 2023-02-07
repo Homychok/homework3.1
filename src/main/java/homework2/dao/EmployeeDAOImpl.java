@@ -1,6 +1,9 @@
 package homework2.dao;
 
+import homework2.config.HibernateSessionFactoryUtil;
 import homework2.model.Employee;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +15,11 @@ import java.util.List;
 public class EmployeeDAOImpl implements EmployeeDAO {
     private Connection connection;
 
-    public EmployeeDAOImpl(Connection connection) {
-        this.connection = connection;
+//    public EmployeeDAOImpl(Connection connection) {
+//        this.connection = connection;
+//    }
+    public EmployeeDAOImpl() {
+
     }
 
     @Override
@@ -31,7 +37,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             throw new RuntimeException(e);
         }
     }
-
+/*
+try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+    session.save(employee);
+    transaction.commit();
+ */
     @Override
     public Employee readById(int id) {
         Employee employee = new Employee();
@@ -54,7 +65,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }
         return employee;
     }
-
+/*
+try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+return session.get(Employee.class, id);}
+ */
     @Override
     public List<Employee> readAll() {
         List<Employee> employees = new ArrayList<>();
@@ -75,26 +89,27 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         }
         return employees;
     }
-
+    /*
+    try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+    return session.createQuery("From Employee").list();}
+     */
     @Override
-    public void updateById(int id, int age) {
-try(PreparedStatement statement = connection.prepareStatement(Queries.UPDATE.query)) {
-    statement.setInt(1, age);
-    statement.setInt(2, id);
-    statement.execute();
-} catch (SQLException e) {
-    throw new RuntimeException(e);
+    public void updateById(Employee employee) {
+try(Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+    Transaction transaction = session.beginTransaction();
+    session.update(employee);
+    transaction.commit();
+
 }
     }
 
     @Override
-    public void deleteById(int id) {
-try (PreparedStatement statement = connection.prepareStatement(Queries.DELETE.query)){
-    statement.setInt(1,id);
-    statement.execute();
-} catch (SQLException e) {
-    throw new RuntimeException(e);
-}
+    public void deleteById(Employee employee) {
+        try (Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(employee);
+            transaction.commit();
+        }
     }
 
     enum Queries {
