@@ -18,7 +18,7 @@ public class Application {
             EmployeeDAO employeeDAO = new EmployeeDAOImpl(connection);
 
             Employee employee1 = new Employee("Elena", "Bobricova", "woman", 12, 4);
-            System.out.println(employeeDAO.readById(4));
+            System.out.println(employeeDAO.readById(5));
             List<Employee> employees = employeeDAO.readAll();
             for (Employee employee : employees) {
                 System.out.println(employee);

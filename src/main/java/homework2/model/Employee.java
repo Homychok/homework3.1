@@ -13,9 +13,9 @@ public Employee() {
 
 }
 //
-//    public Employee(Integer id) {
-//        this.id = id;
-//    }
+    public Employee(Integer id) {
+        this.id = id;
+    }
 
     public Employee(Integer id, String firstName, String lastName, String gender, Integer age, Integer cityId) {
         this.firstName = firstName;
