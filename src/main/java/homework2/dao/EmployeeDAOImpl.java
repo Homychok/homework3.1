@@ -20,11 +20,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void create(Employee employee) {
         try(PreparedStatement statement = connection.prepareStatement(
                 Queries.INSERT.query)) {
-            statement.setString(1, employee.getFirst_name());
-            statement.setString(2, employee.getLast_name());
+            statement.setString(1, employee.getFirstName());
+            statement.setString(2, employee.getLastName());
             statement.setString(3, employee.getGender());
             statement.setInt(4, employee.getAge());
-            statement.setInt(5, employee.getCity_id());
+            statement.setInt(5, employee.getCityId());
             statement.execute();
 
         } catch (SQLException e) {
@@ -42,11 +42,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 employee.setId(Integer.parseInt(resultSet.getString("id")));
-                employee.setFirst_name(resultSet.getString("first_name"));
-                employee.setLast_name(resultSet.getString("last_name"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                employee.setLastName(resultSet.getString("last_name"));
                 employee.setGender(resultSet.getString("gender"));
                 employee.setAge(resultSet.getInt("age"));
-                employee.setCity_id(resultSet.getInt("city_id"));
+                employee.setCityId(resultSet.getInt("city_id"));
             }
 
         } catch (SQLException e) {

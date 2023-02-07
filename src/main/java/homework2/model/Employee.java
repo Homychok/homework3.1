@@ -3,35 +3,35 @@ package homework2.model;
 import java.util.Objects;
 
 public class Employee {
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String gender;
     private Integer age;
-    private Integer city_id;
+    private Integer cityId;
     private Integer id;
 public Employee() {
 
 }
+//
+//    public Employee(Integer id) {
+//        this.id = id;
+//    }
 
-    public Employee(Integer id, String first_name, String last_name, String gender, int age, int city_id) {
+    public Employee(Integer id, String firstName, String lastName, String gender, Integer age, Integer cityId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.cityId = cityId;
         this.id = id;
     }
 
-    public Employee(String first_name, String last_name, String gender, Integer age, Integer city_id, Integer id) {
-        this.first_name = first_name;
-        this.last_name = last_name;
+    public Employee(String firstName, String lastName, String gender, Integer age, Integer cityId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.city_id = city_id;
-        this.id = id;
-    }
-
-    public Employee(String first_name, String last_name, String gender, Integer age, Integer city_id) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.gender = gender;
-        this.age = age;
-        this.city_id = city_id;
+        this.cityId = cityId;
     }
 
     public Integer getId() {
@@ -42,20 +42,20 @@ public Employee() {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getGender() {
@@ -74,12 +74,12 @@ public Employee() {
         this.age = age;
     }
 
-    public Integer getCity_id() {
-        return city_id;
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setCity_id(Integer city_id) {
-        this.city_id = city_id;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
     }
 
     @Override
@@ -87,22 +87,22 @@ public Employee() {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(getFirst_name(), employee.getFirst_name()) && Objects.equals(getLast_name(), employee.getLast_name()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getAge(), employee.getAge()) && Objects.equals(getCity_id(), employee.getCity_id()) && Objects.equals(getId(), employee.getId());
+        return Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getAge(), employee.getAge()) && Objects.equals(getCityId(), employee.getCityId()) && Objects.equals(getId(), employee.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirst_name(), getLast_name(), getGender(), getAge(), getCity_id(), getId());
+        return Objects.hash(getFirstName(), getLastName(), getGender(), getAge(), getCityId(), getId());
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                "first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", city_id=" + city_id +
+                ", city_id=" + cityId +
                 ", id=" + id +
                 '}';
     }
