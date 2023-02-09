@@ -1,30 +1,49 @@
 package homework2.model;
 
+import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
-
+@Entity
+@Table(name = "city")
 public class City {
-    private String city_name;
-    private Integer city_id;
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "city_name")
+private String cityName;
+@Column(name = "city_id")
+    private Integer cityId;
+@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+private List<Employee> employee;
+public City() {
+}
 
-    public City(String city_name, Integer city_id) {
-        this.city_name = city_name;
-        this.city_id = city_id;
+    public City(String cityName, Integer cityId) {
+        this.cityName = cityName;
+        this.cityId = cityId;
     }
 
-    public String getCity_name() {
-        return city_name;
+    public String getCityName() {
+        return cityName;
     }
 
-    public void setCity_name(String city_name) {
-        this.city_name = city_name;
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
     }
 
-    public Integer getCity_id() {
-        return city_id;
+    public Integer getCityId() {
+        return cityId;
     }
 
-    public void setCity_id(Integer city_id) {
-        this.city_id = city_id;
+    public void setCityId(Integer cityId) {
+        this.cityId = cityId;
+    }
+
+    public List<Employee> getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(List<Employee> employee) {
+        this.employee = employee;
     }
 
     @Override
@@ -32,19 +51,19 @@ public class City {
         if (this == o) return true;
         if (!(o instanceof City)) return false;
         City city = (City) o;
-        return getCity_name().equals(city.getCity_name()) && getCity_id().equals(city.getCity_id());
+        return Objects.equals(getCityName(), city.getCityName()) && Objects.equals(getCityId(), city.getCityId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getCity_name(), getCity_id());
+        return Objects.hash(getCityName(), getCityId());
     }
 
     @Override
     public String toString() {
         return "City{" +
-                "city_name='" + city_name + '\'' +
-                ", city_id=" + city_id +
+                "cityName='" + cityName + '\'' +
+                ", cityId=" + cityId +
                 '}';
     }
 }

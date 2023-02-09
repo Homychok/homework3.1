@@ -1,7 +1,10 @@
 package homework2;
 
+import homework2.dao.CityDAO;
+import homework2.dao.CityDAOImpl;
 import homework2.dao.EmployeeDAO;
 import homework2.dao.EmployeeDAOImpl;
+import homework2.model.City;
 import homework2.model.Employee;
 
 import java.sql.*;
@@ -12,8 +15,20 @@ public class Application {
 EmployeeDAO employeeDAO = new EmployeeDAOImpl();
             Employee employee1 = new Employee(6,"Elena", "Bobricova", "woman", 12, 4);
 Employee employee2 = new Employee(6,"Elena", "Bobricova", "woman", 17, 4);
-    employeeDAO.updateById(employee2);
-    employeeDAO.deleteById(employee2);
+//    employeeDAO.updateById(employee2);
+//    employeeDAO.deleteById(employee2);
+        Employee employee3 = new Employee("Vlad", "Kurochkin", "man", 43, 4);
+        City city1 = new City("Orel",6);
+        City city2 = new City("Magadan", 7);
+        employeeDAO.create(employee2);
+        employeeDAO.create(employee3);
+        CityDAO cityDAO = new CityDAOImpl();
+        cityDAO.create(city1);
+        cityDAO.create(city2);
+        System.out.println(cityDAO.getCity(4));
+        System.out.println(cityDAO.getAllCities());
+        cityDAO.updateCity(city2);
+        cityDAO.deleteCity(cityDAO.getCity(7));
     }
 }
 //
