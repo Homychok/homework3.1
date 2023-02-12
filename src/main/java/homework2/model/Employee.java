@@ -18,8 +18,11 @@ public class Employee {
     @Column(name = "city_id")
     private Integer cityId;
     @Column(name = "id")
-
     private Integer id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+            @JoinColumn(name = "city_id"))
+
 public Employee() {
 
 }
