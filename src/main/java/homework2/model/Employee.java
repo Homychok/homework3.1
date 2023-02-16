@@ -1,5 +1,5 @@
 package homework2.model;
-
+import homework2.model.City;
 import javax.persistence.*;
 import java.util.Objects;
 @Entity
@@ -15,37 +15,42 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private Integer age;
-    @Column(name = "city_id")
-    private Integer cityId;
     @Column(name = "id")
     private Integer id;
+    @ManyToOne (fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City cityId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-            @JoinColumn(name = "city_id"))
+    public Employee(String firstName, String lastName, String gender, Integer age, Integer id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.gender = gender;
+        this.age = age;
+        this.id = id;
+    }
 
-public Employee() {
-
-}
-//
+    //
     public Employee(Integer id) {
         this.id = id;
     }
 
-    public Employee(Integer id, String firstName, String lastName, String gender, Integer age, Integer cityId) {
+    public Employee(Integer id, String firstName, String lastName, String gender, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityId = cityId;
         this.id = id;
     }
 
-    public Employee(String firstName, String lastName, String gender, Integer age, Integer cityId) {
+    public Employee(String firstName, String lastName, String gender, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityId = cityId;
+    }
+
+    public Employee() {
+
     }
 
     public Integer getId() {
@@ -88,11 +93,11 @@ public Employee() {
         this.age = age;
     }
 
-    public Integer getCityId() {
+    public City getCityId() {
         return cityId;
     }
 
-    public void setCityId(Integer cityId) {
+    public void setCityId(City cityId) {
         this.cityId = cityId;
     }
 

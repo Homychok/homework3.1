@@ -12,7 +12,7 @@ public class City {
 private String cityName;
 @Column(name = "city_id")
     private Integer cityId;
-@OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "city_id", cascade = CascadeType.ALL)
 private List<Employee> employee;
 public City() {
 }

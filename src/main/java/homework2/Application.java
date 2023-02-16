@@ -13,13 +13,15 @@ import java.util.List;
 public class Application {
     public static void main(String[] args) throws SQLException {
 EmployeeDAO employeeDAO = new EmployeeDAOImpl();
-            Employee employee1 = new Employee(6,"Elena", "Bobricova", "woman", 12, 4);
-Employee employee2 = new Employee(6,"Elena", "Bobricova", "woman", 17, 4);
+            Employee employee1 = new Employee(6,"Elena", "Bobricova", "woman", 12);
+Employee employee2 = new Employee(6,"Elena", "Bobricova", "woman", 17);
 //    employeeDAO.updateById(employee2);
 //    employeeDAO.deleteById(employee2);
         Employee employee3 = new Employee("Vlad", "Kurochkin", "man", 43, 4);
         City city1 = new City("Orel",6);
         City city2 = new City("Magadan", 7);
+        employee1.setCityId(city1);
+        employee3.setCityId(city2);
         employeeDAO.create(employee2);
         employeeDAO.create(employee3);
         CityDAO cityDAO = new CityDAOImpl();
