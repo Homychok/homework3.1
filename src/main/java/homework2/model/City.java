@@ -12,14 +12,13 @@ public class City {
 private String cityName;
 @Column(name = "city_id")
     private Integer cityId;
-@OneToMany(mappedBy = "city_id", cascade = CascadeType.ALL)
-private List<Employee> employee;
+@OneToMany(mappedBy = "cityId", cascade = CascadeType.ALL)
+private List<Employee> employees;
 public City() {
 }
 
-    public City(String cityName, Integer cityId) {
+    public City(String cityName) {
         this.cityName = cityName;
-        this.cityId = cityId;
     }
 
     public String getCityName() {
@@ -39,11 +38,15 @@ public City() {
     }
 
     public List<Employee> getEmployee() {
-        return employee;
+        return employees;
     }
 
     public void setEmployee(List<Employee> employee) {
-        this.employee = employee;
+        this.employees = employee;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

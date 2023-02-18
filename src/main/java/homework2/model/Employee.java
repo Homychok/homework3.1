@@ -17,7 +17,7 @@ public class Employee {
     private Integer age;
     @Column(name = "id")
     private Integer id;
-    @ManyToOne (fetch = FetchType.LAZY)
+    @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id")
     private City cityId;
 
@@ -106,23 +106,23 @@ public class Employee {
         if (this == o) return true;
         if (!(o instanceof Employee)) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getAge(), employee.getAge()) && Objects.equals(getCityId(), employee.getCityId()) && Objects.equals(getId(), employee.getId());
+        return Objects.equals(getFirstName(), employee.getFirstName()) && Objects.equals(getLastName(), employee.getLastName()) && Objects.equals(getGender(), employee.getGender()) && Objects.equals(getAge(), employee.getAge()) && Objects.equals(getId(), employee.getId()) && Objects.equals(getCityId(), employee.getCityId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFirstName(), getLastName(), getGender(), getAge(), getCityId(), getId());
+        return Objects.hash(getFirstName(), getLastName(), getGender(), getAge(), getId(), getCityId());
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "first_name='" + firstName + '\'' +
-                ", last_name='" + lastName + '\'' +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", city_id=" + cityId +
                 ", id=" + id +
+                ", cityId=" + cityId +
                 '}';
     }
 }
