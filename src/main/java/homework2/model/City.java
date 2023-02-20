@@ -9,10 +9,11 @@ import java.util.Objects;
 public class City {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(name = "city_id")
+private Integer cityId;
 @Column(name = "city_name")
 private String cityName;
-@Column(name = "city_id")
-    private Integer cityId;
+
 @OneToMany(mappedBy = "cityId", cascade = CascadeType.ALL)
 private List<Employee> employees;
 public City() {
