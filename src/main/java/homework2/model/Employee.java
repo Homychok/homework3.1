@@ -7,6 +7,8 @@ import java.util.Objects;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
     @Column(name = "first_name")
     private String firstName;
 @Column(name = "last_name")
@@ -15,8 +17,7 @@ public class Employee {
     private String gender;
     @Column(name = "age")
     private Integer age;
-    @Column(name = "id")
-    private Integer id;
+
     @ManyToOne (fetch = FetchType.EAGER)
     @JoinColumn(name = "city_id")
     private City cityId;

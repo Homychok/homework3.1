@@ -18,7 +18,7 @@ EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 Employee employee2 = new Employee(6,"Elena", "Bobricova", "woman", 17);
 //    employeeDAO.updateById(employee2);
 //    employeeDAO.deleteById(employee2);
-        Employee employee3 = new Employee("Vlad", "Kurochkin", "man", 43, 7);
+        Employee employee3 = new Employee("Vlad", "Kurochkin", "man", 43);
         cityDAO.create(new City("Orel"));
         City city2 = new City("Magadan");
                 cityDAO.create(city2);
